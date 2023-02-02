@@ -44,7 +44,7 @@ int main(){
     f[1] = 1;
     for (int i = 2; i <= n; ++i) f[i] = f[i - 1] * i;
     ll sum = 0;
-	for (int i = 1; i <= n; ++i) sum += f[i];
+	f1 (i,n) sum += f[i];
 	cout << sum;
     return 0;
 }
