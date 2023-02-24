@@ -46,39 +46,17 @@ int main(){
     vector <string> v;
     TC(){
     	string s; cin >> s;
-    	s += "@";
-    	string res = "";
     	f0 (i,sz(s)){
-    		if (isdigit(s[i])) res += s[i];
-    		else{
-    			if (res != ""){
-    				v.pb(res);
-    				res = "";
-    			}
-    		}
-    	}
-    }
-    for (string x : v){
-    	int cnt = 0;
-    	for (char c : x){
-    		if (c == '0') ++cnt;
-    	}
-    	if (cnt == sz(x)) v.pb("0");
+            if (!isdigit(s[i])) s[i] = ' ';
+        }
+        string token;
+        stringstream ss(s);
+        while (ss >> token){
+            while (sz(token) >= 2 && token[0] == '0') token.erase(0, 1);
+            v.pb(token);
+        }
     }
     sort(all(v), cmp);
-    for (string x : v){
-    	if (x == "0") cout << x;
-    	else{
-    		int idx = 0;
-	    	if (x[0] == '0'){
-	    		f0 (i,sz(x)){
-	    			if (x[i] == '0') idx = i + 1;
-	    			else break;
-	    		}
-	    	}
-	    	for (int i = idx; i < sz(x); ++i) cout << x[i];
-    	}
-    	el;
-    }
+    for (string x : v) cout << x << "\n";
     return 0;
 }
